@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Build :Get the source code from the directory path specified by the environment variable: ${env.DIRECTORY_PATH}"
-                echo "Build :Compile the code and generate any necessary artifacts"
+                echo "Build :Retrieve the source code from the directory specified by the environment variable.: ${env.DIRECTORY_PATH}"
+                echo "Build :Build the code and create the required artifacts."
                 echo "Building using Maven"
             }
         }
@@ -21,12 +21,12 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                echo "code quality :Check the quality of the code in SONARQUBE"
+                echo "code quality :Evaluate the code quality in SONARQUBE"
             }
         }
         stage('Security Scan') {
             steps {
-                echo "conducting the security scan in ZAP"
+                echo "evaluate the code quality by conducting the security scan in ZAP"
             }
         }
         stage('Deploy to Staging') {
@@ -36,19 +36,19 @@ pipeline {
         }
         stage('Integration Tests on Staging') {
             steps {
-                echo "running the integration tests on maven to ensure the aplication functions as expected"
+                echo "Run the integration tests using Maven to ensure the application functions as expected."
             }
         }
         stage('Deploy to Production') {
             steps {
-                echo " deploy the application to AWWS EC2 instance"
+                echo " Deploy the application to an AWS EC2 instance."
             }
         }
     }
     post{
         success {
-            emailext body: 'Jenkins exp6: success',
-                subject: 'Jenkins success',
+            emailext body: 'Jenkins semi6: success',
+                subject: 'Jenkins Success',
                 attachLog: true,
                 to: 'vaibhav.ashwin@gmail.com'
         }
