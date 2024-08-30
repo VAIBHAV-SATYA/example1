@@ -1,2 +1,2 @@
 # example1
-generating a jrnkin pipeline
+generating a jenkins pipeline
