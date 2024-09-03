@@ -3,60 +3,67 @@ pipeline {
     environment {
         DIRECTORY_PATH = '/path/to/my/codefile'    
         TESTING_ENVIRONMENT = 'QA'
-        PRODUCTION_ENVIRONMENT = 'KSV'      
+        PRODUCTION_ENVIRONMENT = 'khushi'      
     }
     stages {
         stage('Build') {
             steps {
-                echo "Build :Retrieve the source code from the directory specified by the environment variable.: ${env.DIRECTORY_PATH}"
-                echo "Build :Build the Code and create the required artifacts."
+                echo "Building: Retrieving source code from the directory path specified by the environment variable: ${env.DIRECTORY_PATH}"
+                echo "Building: Compiling the code and generating the required artifacts"
                 echo "Building using Maven"
+
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                echo "Test :Running unit tests in JUNIT"
-                echo "Test :Running integration tests in MOCKITO"
+                echo "Testing: Executing unit tests using JUnit"
+                echo "Testing: Running integration tests with Mockito"
+
             }
         }
         stage('Code Analysis') {
             steps {
-                echo "code quality :Evaluate the code quality in SONARQUBE"
+                echo "Code Quality: Assessing code quality with SonarQube"
+
             }
         }
         stage('Security Scan') {
             steps {
-                echo "Evaluate the code quality by conducting the security scan in ZAP."
+               echo "Performing the security scan using ZAP"
+               
             }
         }
         stage('Deploy to Staging') {
             steps {
-                echo "deploy the application to AWS EC2 instance"
+             echo "Deploying the application to an AWS EC2 instance"
+
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                echo "Run the integration tests using Maven to ensure the application functions as expected."
+               echo "Running integration tests with Maven to verify the application functions as expected"
+
             }
         }
         stage('Deploy to Production') {
             steps {
-                echo " Deploy the application to an AWS EC2 instance."
+               echo "Deploying the application to an AWS EC2 instance"
+
             }
         }
     }
     post{
         success {
-            emailext body: 'Jenkins semi6: success',
-                subject: 'Jenkins Success',
+            emailext body: 'Jenkins exp6: success',
+                subject: 'Jenkins success',
                 attachLog: true,
-                to: 'vaibhav.ashwin@gmail.com'
+                to: 'khushiptl55@gmail.com'
         }
         failure {
-            emailext body: 'Jenkins semi6: failure',
+            emailext body: 'Jenkins exp6: failure',
                 subject: 'Jenkins failure',
                 attachLog: true,
-                to: 'vaibhav.ashwin@gmail.com'
+                to: 'khushiptl55@gmail.com'
         }
     }
 }
